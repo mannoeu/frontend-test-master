@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/LottaLeben/frontend-test/blob/master/logo.png" alt="lottaleben" />
+  <img src="./logo.png" alt="lottaleben" />
 </p>
 
 # Event Overview with Datepicker Filter
