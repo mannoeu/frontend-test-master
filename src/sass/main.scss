@@ -1,14 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
 @import url("https://use.typekit.net/bqp8wjl.css");
+
 @import "reset";
 @import "breakpoint-sass";
 @import "breakpoint-slicer";
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
-@import url("../bootstrap/css/bootstrap.min.css");
+@import "../bootstrap/css/bootstrap.min.css";
+@import "./var.scss";
 
 $slicer-breakpoints: 0 400px 900px 1200px 1440px;
+
 body {
   font-family: "Lato", sans-serif;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%) no-repeat;
 }
 .row {
   .col-lg-4 {
@@ -17,11 +21,11 @@ body {
     align-content: center;
   }
 }
+/* ----------- */
 .card {
   width: 300px;
-  background: #eeeeee;
+  background: #f5f6fa;
   transition: all 0.2s linear;
-  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.42);
@@ -30,11 +34,77 @@ body {
     transform: scale(1.1) translateY(-10px);
     opacity: 1;
   }
+
+  .event-info {
+    margin: 1rem 0;
+    width: 100%;
+
+    p:not(:last-child) {
+      text-align: left;
+      font-weight: bold;
+      color: $muted-text;
+      line-height: $md;
+
+      span {
+        font-weight: normal;
+      }
+    }
+    p:last-child {
+      margin-top: $sm;
+      text-align: center;
+      font-size: 3 * $sm;
+      color: $color-dark;
+      font-weight: bold;
+    }
+  }
+  .card-body {
+    h6 {
+      font-size: $lg;
+      margin: $sm;
+      color: $color-dark;
+    }
+    a {
+      display: block;
+      // 4/5 there is a 0.8
+      padding: ($md * 4/5) $md;
+
+      text-transform: uppercase;
+
+      font-size: $sm + 0.1;
+      letter-spacing: 0.06rem;
+
+      background: $color-dark;
+      color: $color-light;
+
+      transition: background 0.2s cubic-bezier(0.47, 0.25, 0.75, 0.8);
+
+      &:hover {
+        background: $color-darker;
+      }
+    }
+
+    & > p {
+      text-align: justify;
+      line-height: $lg / 1.8;
+    }
+
+    address {
+      margin: $md 0;
+      font-size: $md * 4/5;
+      color: $muted-text;
+      font-style: italic;
+
+      i {
+        color: $muted-text;
+      }
+    }
+  }
 }
+/* ----------- */
 
 .card-image {
   width: 100%;
-  height: 12rem;
+  height: $lg-size;
   overflow: hidden;
   object-position: bottom center;
 
