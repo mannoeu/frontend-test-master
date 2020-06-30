@@ -1,11 +1,17 @@
 import "./sass/main.scss";
 import "./bootstrap/js/bootstrap.min.js";
-import { data } from "./data";
 import { toTimeStampFromDateTime } from "./utils";
 
-const events = data.events;
-
 const rowContainer = document.querySelector("[data-id='row']");
+var events;
+
+function getEvents() {
+  fetch("http://localhost:8080/sample-data.json")
+    .then((res) => res.json())
+    .then((res) => (events = res.events));
+}
+
+document.addEventListener("DOMContentLoaded", getEvents());
 
 function createCard(event) {
   // create a container

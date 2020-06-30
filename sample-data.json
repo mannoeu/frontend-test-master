@@ -3,7 +3,7 @@
     {
       "title": "Rock im Park",
       "description": "Rock im Park is a music festival held annually in May or June at the Volkspark Dutzendteich in Nuremberg and a parallel event to Rock am Ring with an almost identical line-up.",
-      "image": "./rock-im-park.jpg",
+      "image": "img/rock-im-park.jpg",
       "start": 1559890800,
       "end": 1560114000,
       "recurrence": "yearly",
@@ -20,7 +20,7 @@
     {
       "title": "Oktoberfest",
       "description": "The Oktoberfest in Munich is the biggest folk festival in the world.<br />It takes place since 1810 on the Theresienwiese in the Bavarian capital Munich.",
-      "image": "./oktoberfest.jpg",
+      "image": "img/oktoberfest.jpg",
       "start": 1569016800,
       "end": 1570399199,
       "recurrence": "monthly",
@@ -37,7 +37,7 @@
     {
       "title": "Avengers - Endgame",
       "description": "Half of all life in the universe has been wiped out and there seems to be only one possible future. Do the Avengers and their allied superheroes have what they need to lift the crushing power of the Infinity Stones?",
-      "image": "./avengers.jpg",
+      "image": "img/avengers.jpg",
       "start": 1556143140,
       "end": 1556154000,
       "recurrence": "daily",
