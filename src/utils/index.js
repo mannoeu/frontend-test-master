@@ -13,18 +13,36 @@ var months = [
   "Dec",
 ];
 
-export const toTimeStampFromDateTime = (timestamp) => {
-  var date = new Date(timestamp * 1000);
-
-  const finalMonth = months[date.getMonth()];
-  const finalDay = date.getDate();
-  const finalFullYear = date.getFullYear();
+export const fullData = (timestamp) => {
+  const dayMonthAndYear = converterTimeStampToData(timestamp);
+  let date = new Date(timestamp * 1000);
   const finalHours =
     date.getHours() <= 9 ? `0${date.getHours()}` : date.getHours();
   const finalMinutes =
     date.getMinutes() === 0 ? `0${date.getMinutes()}` : date.getMinutes();
 
-  const datetime = `${finalMonth}-${finalDay}-${finalFullYear} at. ${finalHours}h${finalMinutes}min`;
+  const datetime = `${dayMonthAndYear} at. ${finalHours}h${finalMinutes}min`;
 
   return datetime;
+};
+
+export const converterTimeStampToData = (timestamp) => {
+  let date = new Date(timestamp * 1000);
+
+  const finalMonth = months[date.getMonth()];
+  const finalDay = date.getDate() <= 9 ? `0${date.getDate()}` : date.getDate();
+  const finalFullYear = date.getFullYear();
+
+  const dateFinal = `${finalMonth} ${finalDay} ${finalFullYear}`;
+
+  return dateFinal;
+};
+
+export const FormatData = (data) => {
+  const finalData = data.split("-");
+  const dateFinal = `${months[Number(finalData[1] - 1)]} ${finalData[2]} ${
+    finalData[0]
+  }`;
+
+  return dateFinal;
 };
