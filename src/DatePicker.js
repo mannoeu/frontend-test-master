@@ -1,6 +1,8 @@
 import moment from "moment";
 
 export default class DatePicker {
+  constructor()
+  
   formatDateToCompare(date) {
     let finalDate = moment(date * 1000)
       .set("hour", 0)
