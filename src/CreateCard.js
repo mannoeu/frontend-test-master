@@ -1,4 +1,4 @@
-import { fullData } from "./utils";
+import { fullDate } from "./utils";
 
 const rowContainer = document.querySelector("[data-id='row']");
 
@@ -64,7 +64,7 @@ export default function createCard(event) {
   dateStart.setAttribute("data-id", "date-start");
   let textDateStart = document.createElement("span");
   dateStart.innerHTML = "Start: ";
-  textDateStart.innerHTML = fullData(event.start);
+  textDateStart.innerHTML = fullDate(event.start);
   dateStart.appendChild(textDateStart);
 
   // create a date end
@@ -72,7 +72,7 @@ export default function createCard(event) {
   dateEnd.setAttribute("data-id", "date-end");
   let textdateEnd = document.createElement("span");
   dateEnd.innerHTML = "End: ";
-  textdateEnd.innerHTML = fullData(event.end);
+  textdateEnd.innerHTML = fullDate(event.end);
   dateEnd.appendChild(textdateEnd);
 
   // create a recurrence

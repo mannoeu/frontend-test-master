@@ -13,27 +13,27 @@ var months = [
   "Dec",
 ];
 
-export const fullData = (timestamp) => {
-  const dayMonthAndYear = converterTimeStampToData(timestamp);
+export const fullDate = (timestamp) => {
+  const dayMonthAndYear = converterTimeStampToDate(timestamp);
   let date = new Date(timestamp * 1000);
   const finalHours =
     date.getHours() <= 9 ? `0${date.getHours()}` : date.getHours();
   const finalMinutes =
     date.getMinutes() === 0 ? `0${date.getMinutes()}` : date.getMinutes();
 
-  const datetime = `${dayMonthAndYear} at. ${finalHours}h${finalMinutes}min`;
+  const dateTime = `${dayMonthAndYear} at. ${finalHours}h${finalMinutes}min`;
 
-  return datetime;
+  return dateTime;
 };
 
-export const converterTimeStampToData = (timestamp) => {
+export const converterTimeStampToDate = (timestamp) => {
   let date = new Date(timestamp * 1000);
 
   const finalMonth = months[date.getMonth()];
   const finalDay = date.getDate() <= 9 ? `0${date.getDate()}` : date.getDate();
   const finalFullYear = date.getFullYear();
 
-  const dateFinal = `${finalMonth} ${finalDay} ${finalFullYear}`;
+  const finalDate = `${finalMonth} ${finalDay} ${finalFullYear}`;
 
-  return dateFinal;
+  return finalDate;
 };
