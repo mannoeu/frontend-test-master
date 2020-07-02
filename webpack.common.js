@@ -1,9 +1,10 @@
 const path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./src/index.js"
+    main: "./src/index.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -12,9 +13,16 @@ module.exports = {
       inject: true,
       minify: {
         removeComments: true,
-        collapseWhitespace: false
-      }
-    })
+        collapseWhitespace: false,
+      },
+    }),
+    // To strip all locales except “en”
+    new MomentLocalesPlugin(),
+    // Or: To strip all locales except “en”, “es-us” and “ru”
+    // (“en” is built into Moment and can’t be removed)
+    new MomentLocalesPlugin({
+      localesToKeep: ["es-us", "ru"],
+    }),
   ],
   module: {
     rules: [
@@ -25,9 +33,9 @@ module.exports = {
           options: {
             name: "[name].[hash].[ext]",
             outputPath: "imgs",
-            esModule: false
-          }
-        }
+            esModule: false,
+          },
+        },
       },
       {
         test: /\.js$/,
@@ -36,16 +44,16 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-object-rest-spread"]
-          }
-        }
+            plugins: ["@babel/plugin-proposal-object-rest-spread"],
+          },
+        },
       },
       {
         test: /\.(html)$/,
         use: {
-          loader: "html-loader"
-        }
-      }
-    ]
-  }
+          loader: "html-loader",
+        },
+      },
+    ],
+  },
 };

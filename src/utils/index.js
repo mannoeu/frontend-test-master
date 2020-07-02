@@ -37,12 +37,3 @@ export const converterTimeStampToData = (timestamp) => {
 
   return dateFinal;
 };
-
-export const FormatData = (data) => {
-  const finalData = data.split("-");
-  const dateFinal = `${months[Number(finalData[1] - 1)]} ${finalData[2]} ${
-    finalData[0]
-  }`;
-
-  return dateFinal;
-};

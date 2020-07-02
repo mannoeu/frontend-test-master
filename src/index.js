@@ -1,12 +1,14 @@
-import "./sass/main.scss";
+import moment from "moment";
 import "./bootstrap/js/bootstrap.min.js";
 import createCard from "./CreateCard";
-import { converterTimeStampToData, FormatData } from "./utils";
+import DatePicker from "./DatePicker";
+
+import "./sass/main.scss";
 
 const search = document.querySelector("[data-id='search-date']");
+const compare = new DatePicker();
 
-var events;
-var filtered;
+var events, filtered;
 
 function getEvents() {
   fetch("http://localhost:8080/sample-data.json")
@@ -14,22 +16,20 @@ function getEvents() {
     .then((res) => (events = res.events));
 }
 
-getEvents();
+document.addEventListener("DOMContentLoaded", getEvents());
 
 function filteredEvents(date) {
   console.log(date);
   filtered = fetch("http://localhost:8080/sample-data.json")
     .then((res) => res.json())
     .then((res) =>
-      // ainda falta pegar os dias entre o start e o end
       res.events.filter(
         (event) =>
-          converterTimeStampToData(event.start) === date ||
-          converterTimeStampToData(event.end) === date
+          date.isSameOrAfter(compare.formatDateToCompare(event.start)) &&
+          date.isSameOrBefore(compare.formatDateToCompare(event.end))
       )
-    );
-
-  console.log(filtered);
+    )
+    .then((filtered) => filtered.map((event) => createCard(event)));
 }
 
 let time = null;
@@ -37,9 +37,8 @@ function debounce(e) {
   clearTimeout(
     time,
     (time = setTimeout(() => {
-      let searchData = FormatData(search.value);
-      filteredEvents(searchData);
-    }, 500))
+      filteredEvents(moment(search.value));
+    }, 700))
   );
 }
 

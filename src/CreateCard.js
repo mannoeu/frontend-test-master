@@ -1,4 +1,5 @@
 import { fullData } from "./utils";
+
 const rowContainer = document.querySelector("[data-id='row']");
 
 export default function createCard(event) {
