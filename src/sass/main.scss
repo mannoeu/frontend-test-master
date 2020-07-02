@@ -114,3 +114,29 @@ body {
     opacity: 0.8;
   }
 }
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .input-group {
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      font-size: $sm-size / 4;
+      color: $color-dark;
+    }
+    input {
+      margin-top: $md;
+      border: 1px solid darken($color-light, 10%);
+      padding: $sm $md;
+      color: $color-dark;
+    }
+  }
+}

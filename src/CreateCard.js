@@ -6,6 +6,7 @@ export default function createCard(event) {
   // create a container
   let container = document.createElement("div");
   container.classList.add("col-md-6", "col-lg-4");
+  container.setAttribute("data-id", "card");
 
   // create a card
   let card = document.createElement("div");

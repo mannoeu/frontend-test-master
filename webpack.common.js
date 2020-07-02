@@ -8,7 +8,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Código Falado Rules",
+      title: "Rules",
       template: "./src/index.html",
       inject: true,
       minify: {
@@ -44,7 +44,10 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-object-rest-spread"],
+            plugins: [
+              "@babel/plugin-proposal-object-rest-spread",
+              "@babel/plugin-transform-runtime",
+            ],
           },
         },
       },

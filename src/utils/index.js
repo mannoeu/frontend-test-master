@@ -13,6 +13,11 @@ var months = [
   "Dec",
 ];
 
+/**
+ *
+ * @param {date in timestamp format} timestamp
+ * @return a string with full date and time of the event
+ */
 export const fullDate = (timestamp) => {
   const dayMonthAndYear = converterTimeStampToDate(timestamp);
   let date = new Date(timestamp * 1000);
@@ -26,6 +31,11 @@ export const fullDate = (timestamp) => {
   return dateTime;
 };
 
+/**
+ *
+ * @param {date in timestamp format} timestamp
+ * @return a string with full date of the event
+ */
 export const converterTimeStampToDate = (timestamp) => {
   let date = new Date(timestamp * 1000);
 
