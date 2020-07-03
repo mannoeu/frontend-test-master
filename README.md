@@ -162,3 +162,26 @@ The application should at least work on the following devices:
 - iPad
 - iPad Pro
 - Desktop Devices (Windows, Mac, Linux) >= 1200px
+
+
+## 5. Other tools used
+
+- MomentsJs
+- @Babel
+
+## 6 How to run
+
+Navigate to the root of the project and install the dependencies
+```
+npm install or yarn 
+```
+
+Runs the app in the development mode.
+```
+npm start or yarn start
+```
+
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+The page will reload if you make edits.<br />
+
+
