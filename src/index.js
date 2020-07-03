@@ -9,35 +9,35 @@ import "./sass/main.scss";
 const search = document.querySelector("[data-id='search-date']");
 const compare = new DatePicker();
 
-var events, filtered;
+var events;
 
 /**
  * lists all cards
  */
-function getEvents() {
-  fetch("http://localhost:8080/sample-data.json")
-    .then((res) => res.json())
-    .then((res) => (events = res.events));
+async function getEvents() {
+  let res = await fetch("http://localhost:8080/sample-data.json");
+  let resInJson = await res.json();
+
+  events = resInJson.events;
+  events.map((event) => createCard(event));
 }
 
-document.addEventListener("DOMContentLoaded", getEvents());
-document.addEventListener("DOMContentLoaded", () => {
-  events.map((event) => createCard(event));
-});
+document.addEventListener("DOMContentLoaded", () => getEvents());
 /**
  * filters cards by start and end date
  */
-function filterEvents(date) {
-  filtered = fetch("http://localhost:8080/sample-data.json")
-    .then((res) => res.json())
-    .then((res) =>
-      res.events.filter(
-        (event) =>
-          date.isSameOrAfter(compare.formatDateToCompare(event.start)) &&
-          date.isSameOrBefore(compare.formatDateToCompare(event.end))
-      )
-    )
-    .then((filtered) => filtered.map((event) => createCard(event)));
+
+async function filterEvents(date) {
+  let res = await fetch("http://localhost:8080/sample-data.json");
+  let resInJson = await res.json();
+
+  let filtered = resInJson.events.filter(
+    (event) =>
+      date.isSameOrAfter(compare.formatDateToCompare(event.start)) &&
+      date.isSameOrBefore(compare.formatDateToCompare(event.end))
+  );
+
+  filtered.map((event) => createCard(event));
 }
 
 /**
